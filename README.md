@@ -50,7 +50,7 @@ https://www.baeldung.com/linux/use-command-line-arguments-in-bash-script#loop-co
 
 </ol>
 
-# Question 4
+# Question 2
 
 When visiting a website, sometimes you will be asked for a user-id and
 password combo.  The website that we will be using in this exercise is
@@ -87,10 +87,7 @@ in the output.
 If you completed the entire assignment, you will have the following files
 in your assignment directory:
 
-- download.sh
-- q2a.txt
-- dog_image.sh
-- q3a.txt
+- q1a.txt
 - extract_thumbs.sh
 - brute_force.sh
 
