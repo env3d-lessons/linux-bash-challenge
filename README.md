@@ -40,10 +40,10 @@ Put this one-liner into the file **`q1a.txt`**
 </li>
 
 <li>
-Create a script file called <pre><em>extract_thumbs.sh</em></pre> that takes a subreddit
-as an argument.  Running ./extract_thumbs.sh aww will save all thumbnails
-(i.e. the JSON key being "thumbnail") from the https://www.reddit.com/r/aww.json
-into the subdirectory thumbs_aww/
+Create a script file called <strong><code>extract_thumbs.sh</code></strong> that
+takes a subreddit as an argument.  Running ./extract_thumbs.sh aww will save all
+thumbnails (i.e. the JSON key being "thumbnail") from the
+https://www.reddit.com/r/aww.json into the subdirectory thumbs_aww/
 
 ![extract_thumbs.sh](images/image4.gif)
 </li>
