@@ -12,26 +12,35 @@ thumbnail images from a particular subreddit.
 
 <li>
 Come up with a bash one-liner that extracts all the image URLs from
-https://www.reddit.com/r/aww.json where the URLs starts with
-https://i.redd.it/ and ends with png, jpg, or gif.  For example, the
+https://old.reddit.com/r/aww.json where the domain name contains
+thumbs.redditmedia.com and ends with png, jpg, or gif.  For example, the
 following is a partial result of my output:
 
 ```
-https://i.redd.it/6aic0hoye0x41.jpg
-https://i.redd.it/award_images/t5_22cerq/12kz7a7j4v541_HeartEyes.png
-https://i.redd.it/award_images/t5_22cerq/n94bgm83in941_ItsCute.png
-https://i.redd.it/award_images/t5_22cerq/5izbv4fn0md41_Wholesome.png
-https://i.redd.it/award_images/t5_22cerq/vu6om0xnb7e41_This.png
-https://i.redd.it/award_images/t5_22cerq/ineip651cuw41_GuacMyWorld.png
-https://i.redd.it/5alm7ti5tzw41.jpg
-https://i.redd.it/mphydrmgkzw41.jpg
+https://b.thumbs.redditmedia.com/r1W69Teu5AoQHhWZxZHVoaNrv988hoWykke3hKpPuUk.jpg
+https://b.thumbs.redditmedia.com/WU0F9g5eTEzE8oQUS4sKEdbmMPLwvkf-ECa6Job6C7M.jpg
+https://b.thumbs.redditmedia.com/AEpeomHhYUq9XNX-obDtTNQ6aNSy1GdVWirFjRFrLOA.jpg
+https://b.thumbs.redditmedia.com/TVdfyzoeyTPPf5I2HzmT--StxZXDCwrqIXPNTBORnQg.jpg
+https://b.thumbs.redditmedia.com/M_dVA0A2bB2uNVT2cHEafud8ZeUZs4E3zr6aWIgSrXc.jpg
+https://b.thumbs.redditmedia.com/Db8awsyCygCns_SZaAC-TkJjUSOZ5y-SHq3ah7ykMXo.jpg
+https://a.thumbs.redditmedia.com/-ZCBL9kb3CkcvEEX4MvPaFvz6HrQJfXs-_BWoWmT8t4.jpg
+https://b.thumbs.redditmedia.com/bDqMbtITM9oNO4bGjb1YQ-01TsVRkfWa-jQ9MUkPzis.jpg
+https://a.thumbs.redditmedia.com/fP0UFhpuS2fSH5REgnEp6B5DItL87Odu1LJhYVO59b8.jpg
+https://a.thumbs.redditmedia.com/3N9_bGg4Z6nYTVDe7U_6dfUitNzodQ_nlDL76RhmqZ8.jpg
+https://b.thumbs.redditmedia.com/gu1BrFdWRbLP9uWVbIC2RTvcTR8D8BG2_xsBJywuieE.jpg
+https://a.thumbs.redditmedia.com/9d_Q0rLAfJaoLL26G_aZ-rD6g477d2BG5O9Y_T9jfP0.jpg
+https://b.thumbs.redditmedia.com/gD_k_uIWUIfWZazsT7t6_tBrzrdrxm0q2g4PLsFgwzM.jpg
+https://b.thumbs.redditmedia.com/2tMkGTbdPlaZ4tmIPMtaX8jDCiulkAVZRD6Om6ptRdE.jpg
+https://b.thumbs.redditmedia.com/T_PG0G7oMDdU0QTPBl5KYTYj3SnM-zQ6jQNKc6ocN9E.jpg
+https://b.thumbs.redditmedia.com/N6-K-_V978-M3HvfE0yh8NeJ1w-QHfbEBcdntXNN88E.jpg
+https://b.thumbs.redditmedia.com/g2AHWlZbeLo3sVLn2DNcR1tlJCdZY8_6f2lhXlP_B-o.jpg
 ```
 
 Put this one-liner into the file **`q1a.txt`**
 </li>
 
 <li>
-Create a script file called **`extract_thumbs.sh`** that takes a subreddit
+Create a script file called <pre><em>extract_thumbs.sh</em></pre> that takes a subreddit
 as an argument.  Running ./extract_thumbs.sh aww will save all thumbnails
 (i.e. the JSON key being "thumbnail") from the https://www.reddit.com/r/aww.json
 into the subdirectory thumbs_aww/
