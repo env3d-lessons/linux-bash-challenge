@@ -86,7 +86,7 @@ total 12056
 </li>
 
 <li>
-Create a script called `extract_images_2.sh`.  This script will take multiple WordPress
+Create a script called <strong><code>extract_images_2.sh</code></strong>.  This script will take multiple WordPress
 websites as command line arguments and extract each site's images into their own
 downloads subdirectories.  As follows:
 
