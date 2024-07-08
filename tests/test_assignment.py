@@ -3,12 +3,19 @@ import pathlib
 import os
 import re
 import urllib.request
-
-
+    
 def file_basic_check(f):
     # Test file existence and not empty
     assert pathlib.Path(f).is_file()
     assert pathlib.Path(f).stat().st_size > 0
+    
+def chatgpt_check(f):
+    with open(f) as fi:
+        text = fi.read()
+        assert 'local' not in text, "I have never taught you the local keyword"
+        assert '^https' not in text, "You do not need to use ^https"
+        assert 'while read' not in text, "I have never taught you while loop"
+        assert 'uploads' not in text, "Do not explicitly check the uploads directory"
 
 def file_regex(f, regex):
     # Test the content of a file against a regex
@@ -21,7 +28,7 @@ def test_q1a():
 
 @pytest.fixture
 def q1a_results():
-    print('fixture')
+    chatgpt_check('q1a.txt')
     return os.popen('bash q1a.txt').readlines()
 
 def test_q1a_exec_check_0(q1a_results):
@@ -41,6 +48,7 @@ def test_extract_images_2():
 
 @pytest.fixture
 def path_pics():
+    chatgpt_check('extract_images.sh')
     os.popen('rm -r ./downloads.techcrunch.com').read()    
     os.popen('./extract_images.sh techcrunch.com').read()
     yield pathlib.Path('./downloads.techcrunch.com')
@@ -57,6 +65,7 @@ def test_extract_thumbs_exec_2(path_pics):
 
 @pytest.fixture
 def path_pics_2():
+    chatgpt_check('extract_images_2.sh')    
     os.popen('rm -r ./downloads.techcrunch.com ./downloads.www.nasa.gov').read()    
     os.popen('./extract_images_2.sh techcrunch.com www.nasa.gov').read()
     yield [pathlib.Path('./downloads.techcrunch.com'), pathlib.Path('./downloads.www.nasa.gov')] 
@@ -77,6 +86,10 @@ def test_brute_force():
     file_basic_check('brute_force.sh')
 
 def test_brute_force_content():
+    with open('brute_force.sh') as fi:
+        text = fi.read()
+        assert '-u' not in text, "I have never taught you the -u argument"
+        
     assert file_regex('brute_force.sh', 'curl.*10k-most-common.txt.*head'), (
         "Must curl the password file")
     assert file_regex('brute_force.sh', 'learn.operatoroverload.com/~jmadar/protected/index.html'), (
