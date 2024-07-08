@@ -28,24 +28,23 @@ def test_q1a_exec_check_0(q1a_results):
     assert len(q1a_results) > 0, "no results produced"
 
 def test_q1a_exec_check_1(q1a_results):
-    assert len([ url for url in q1a_results if 'thumbs.redditmedia.com' in url]) == len(q1a_results), (
-        "all links must contain thumbs.redditmedia.com")
-
-def test_q1a_exec_check_2(q1a_results):
-    print(q1a_results)
     assert len([ url for url in q1a_results if
                  url.endswith('gif\n') or url.endswith('jpg\n') or url.endswith('png\n')]
                ) == len(q1a_results), "all links must end with gif, jpg, or png"    
     
-def test_extract_thumbs():
-    file_basic_check('extract_thumbs.sh')
+def test_extract_images_1():
+    file_basic_check('extract_images.sh')
+    
+def test_extract_images_2():
+    file_basic_check('extract_images_2.sh')
 
 
 @pytest.fixture
 def path_pics():
-    os.popen('./extract_thumbs.sh pics').read()
-    yield pathlib.Path('./thumbs_pics')
-    os.popen('rm -r ./thumbs_pics').read()
+    os.popen('rm -r ./downloads.techcrunch.com').read()    
+    os.popen('./extract_images.sh techcrunch.com').read()
+    yield pathlib.Path('./downloads.techcrunch.com')
+    os.popen('rm -r ./downloads.techcrunch.com').read()
     
 def test_extract_thumbs_exec_1(path_pics):
     assert path_pics.is_dir()
@@ -55,6 +54,24 @@ def test_extract_thumbs_exec_2(path_pics):
                 list(path_pics.glob('*.jpg')) +
                 list(path_pics.glob('*.png'))
                ) > 0
+
+@pytest.fixture
+def path_pics_2():
+    os.popen('rm -r ./downloads.techcrunch.com ./downloads.www.nasa.gov').read()    
+    os.popen('./extract_images_2.sh techcrunch.com www.nasa.gov').read()
+    yield [pathlib.Path('./downloads.techcrunch.com'), pathlib.Path('./downloads.www.nasa.gov')] 
+    os.popen('rm -r ./downloads.techcrunch.com ./downloads.www.nasa.gov').read()
+    
+def test_extract_images_2_exec_1(path_pics_2):
+    for path_pics in path_pics_2:
+        assert path_pics.is_dir()
+
+def test_extract_images_2_exec_2(path_pics_2):
+    for path_pics in path_pics_2:    
+        assert len( list(path_pics.glob('*.gif')) +
+                    list(path_pics.glob('*.jpg')) +
+                    list(path_pics.glob('*.png'))
+                   ) > 0
     
 def test_brute_force():
     file_basic_check('brute_force.sh')
