@@ -154,7 +154,8 @@ If you completed the entire assignment, you will have the following files
 in your assignment directory:
 
 - q1a.txt
-- extract_thumbs.sh
+- extract_images.sh
+- extract_images_2.sh
 - brute_force.sh
 
 Make sure you run `pytest` to check your score.
