@@ -88,7 +88,7 @@ def test_brute_force():
 def test_brute_force_content():
     with open('brute_force.sh') as fi:
         text = fi.read()
-        assert '-u' not in text, "I have never taught you the -u argument"
+        assert ' -u' not in text, "I have never taught you the -u argument"
         
     assert file_regex('brute_force.sh', 'curl.*10k-most-common.txt.*head'), (
         "Must curl the password file")
